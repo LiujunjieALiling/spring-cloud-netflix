@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "com.ljj.sourcecode.demo.ip",
+      "type": "java.lang.String",
+      "description": "Description for com.ljj.sourcecode.demo.ip."
+    },
+    {
+      "name": "com.ljj.sourcecode.demo.port",
+      "type": "java.lang.String",
+      "description": "Description for com.ljj.sourcecode.demo.port."
+    }
+  ] }
