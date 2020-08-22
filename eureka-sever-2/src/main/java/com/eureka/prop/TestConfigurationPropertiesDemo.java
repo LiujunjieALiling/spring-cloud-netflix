@@ -2,11 +2,11 @@ package com.eureka.prop;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.ConstructorBinding;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 /**
  * {@link org.springframework.boot.context.properties.ConfigurationProperties}
- *
+ * {@link ConfigurationPropertiesScan}
  * @author Ljj
  * @date 2020/6/5 10:37
  * @since 1.0
