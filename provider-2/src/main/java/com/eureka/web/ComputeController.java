@@ -13,7 +13,7 @@ public class ComputeController {
     @GetMapping(value="/testLoadBalance")
     public String testServiceB(@RequestParam Integer a,@RequestParam Integer b){
 
-        log.info("service-B2 接收到请求======>");
+        log.info("provider2 接收到请求======>");
 
     	return String.valueOf(Math.addExact(a,b));
     }
