@@ -20,14 +20,25 @@ import java.util.Map;
 public class LoadBalancedSupport {
 
     @Autowired
-//    @Qualifier("primaryRestTemplate")
-    private RestTemplate  restTemplate;
+    private RestTemplate  primaryRestTemplate;
+
+    @Autowired
+    @Qualifier("secondRestTemplate")
+    private RestTemplate  secondRestTemplate;
 
 
     @GetMapping("/loadBalance")
     public Map<String,String> loadBalanced(){
 
-        String str = restTemplate.getForObject("http://provider/testLoadBalance?a=10&b=20", String.class);
+        String str = primaryRestTemplate.getForObject("http://provider/testLoadBalance?a=10&b=20", String.class);
+
+        return Collections.singletonMap(str,"0");
+    }
+
+    @GetMapping("/noLoadBalance")
+    public Map<String,String> noLoadBalanced(){
+
+        String str = secondRestTemplate.getForObject("http://provider/testLoadBalance?a=10&b=20", String.class);
 
         return Collections.singletonMap(str,"0");
     }
