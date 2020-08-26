@@ -1,5 +1,6 @@
 package com.eureka.config;
 
+import com.eureka.annotation.MyLoadBalanced;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,13 @@ public class MyRestTemplateConfiguration {
 
     @Bean
     public RestTemplate secondRestTemplate(){
+        return new RestTemplate();
+    }
+
+
+    @Bean
+    @MyLoadBalanced
+    public RestTemplate myRestTemplate(){
         return new RestTemplate();
     }
 }
