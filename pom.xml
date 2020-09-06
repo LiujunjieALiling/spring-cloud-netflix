@@ -13,6 +13,8 @@
     <module>provider-2</module>
     <module>hystrix-dashboard</module>
     <module>hystrix-app</module>
+    <module>hystrix-app2</module>
+    <module>turbine</module>
   </modules>
   
   	<parent>

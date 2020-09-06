@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-@SpringBootApplication
+@SpringBootApplication(proxyBeanMethods = false)
 @EnableCircuitBreaker
 @RestController
 public class HystrixApplication {
@@ -37,7 +37,7 @@ public class HystrixApplication {
 	 */
 	@GetMapping
 	@HystrixCommand(commandProperties = {
-			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "50")
+			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "50") // default 1000
 
 	},fallbackMethod = "fallbackMethod")
 	public String hystrix(@RequestParam(required =false,defaultValue = "10") int time) throws Exception{
