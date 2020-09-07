@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: turbine
+server:
+  port: 8086
+
+
+# endpoint
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
+# 通过访问 http://localhost:8086/turbine.stream?cluster=HYSTRIX-APP  监控HYSTRIX-APP集群
+turbine:
+  aggregator:
+    clusterConfig: HYSTRIX-APP                             # 可以指定多个集群 (必须要与下面的其中一个应用名称一致，并且值是大写的)
+  appConfig: hystrix-app                                   # 注册到Eureka中得应用名称（可以配置多个）
+
+
+
+# eureka
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:7070/eureka/
+

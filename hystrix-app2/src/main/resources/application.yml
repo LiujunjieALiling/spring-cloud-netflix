@@ -1,0 +1,23 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: hystrix-app
+
+
+# endpoint
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
+
+# eureka
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:7070/eureka/
