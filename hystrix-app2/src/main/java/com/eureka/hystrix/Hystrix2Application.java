@@ -2,8 +2,6 @@ package com.eureka.hystrix;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCacheAspect;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -11,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication(proxyBeanMethods = false)
@@ -25,8 +21,6 @@ public class Hystrix2Application {
 	}
 
 
-	@Autowired
-	private Map<String,HystrixCacheAspect> aspectMap = new HashMap<>(2);
 
 	/**
 	 * 注解模式
@@ -42,7 +36,6 @@ public class Hystrix2Application {
 	},fallbackMethod = "fallbackMethod")
 	public String hystrix(@RequestParam(required =false,defaultValue = "10") int time) throws Exception{
 
-//		aspectMap.forEach((key, value) -> System.out.println(key + "-" + value));
 
 		TimeUnit.MILLISECONDS.sleep(time);// 模拟超时
 
